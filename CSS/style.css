@@ -5,11 +5,9 @@
 	color: #333;
 }
 
-
 /* NAVBAR */
-
 .navbar {
-	background: dark-gray;
+	background: darkgray;
 	color: white;
 	padding: 20px;
 	text-align: center;
@@ -18,18 +16,14 @@
 	box-shadow: 0px 3px 8px rgba(0,0,0,0.4);
 }
 
-
 /* CONTAINER */
-
 .container {
 	width: 90%;
 	margin: auto;
 	margin-top: 30px;
 }
 
-
 /* SECTION TITLES */
-
 .sectionTitle {
 	color: white;
 	text-align: center;
@@ -37,18 +31,15 @@
 	margin-bottom: 20px;
 }
 
-
-/* DASHBOARD GRID */
-
+/* ========================= */
+/* DASHBOARD CARDS */
+/* ========================= */
 .dashboard {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 25px;
 }
-
-
-/* CARDS */
 
 .card {
 	background: white;
@@ -65,27 +56,20 @@
 	transition: 0.3s;
 }
 
-
-/* ICON */
-
 .icon {
 	font-size: 40px;
 	display: block;
 	margin-bottom: 10px;
 }
 
-
-/* HOVER EFFECT */
-
+/* Card hover: lift only, no orange */
 .card:hover {
 	transform: translateY(-8px);
-	background: #f39c12;
-	color: white;
+	background: white;
+	color: #333;
 }
 
-
-/* COMPLEX FORM COLOR */
-
+/* Complex elements hover (blue) */
 .complex {
 	background: white;
 	color: black;
@@ -95,4 +79,105 @@
 		background: #3498db;
 		transform: translateY(-8px);
 		color: white;
+	}
+
+/* ========================= */
+/* FORM STYLES */
+/* ========================= */
+.form-container {
+	width: 45%;
+	margin: 25px auto;
+	background: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 6px 15px rgba(0,0,0,0.3);
+}
+
+.form-title {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+input[type=text], input[type=date], input[type=time] {
+	width: 100%;
+	padding: 6px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	margin-top: 3px;
+}
+
+/* ========================= */
+/* BUTTON STYLES */
+/* ========================= */
+.btn {
+	padding: 7px 14px;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-weight: 600;
+	cursor: pointer;
+	margin-right: 8px;
+}
+
+.insert {
+	background: #27ae60;
+}
+
+	.insert:hover {
+		background: #219150;
+	}
+
+.update {
+	background: #2980b9;
+}
+
+	.update:hover {
+		background: #1f6391;
+	}
+
+.delete {
+	background: #c0392b;
+}
+
+	.delete:hover {
+		background: #992d22;
+	}
+
+.search {
+	background: #8e44ad;
+}
+
+	.search:hover {
+		background: #6d2c91;
+	}
+
+/* ========================= */
+/* GRIDVIEW TABLE */
+/* ========================= */
+.grid-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 15px;
+	font-size: 13px;
+}
+
+	.grid-table th {
+		background: #2c3e50;
+		color: white;
+		padding: 6px;
+		border: 1px solid #ccc;
+	}
+
+	.grid-table td {
+		padding: 5px;
+		border: 1px solid #ccc;
+		text-align: center;
+	}
+
+	.grid-table tr:nth-child(even) {
+		background: #f2f2f2;
+	}
+
+	.grid-table tr:hover {
+		background: #e8f4ff;
 	}

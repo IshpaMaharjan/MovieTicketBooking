@@ -3,8 +3,93 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>Ticket Details</title>
-    <link href="../CSS/style.css" rel="stylesheet" />
+<title>Ticket Details</title>
+
+<style>
+
+body{
+    font-family:'Segoe UI', Tahoma;
+    background: linear-gradient(135deg,#1d4350,#a43931);
+    margin:0;
+}
+
+.navbar{
+    background:#111;
+    color:white;
+    padding:12px;
+    text-align:center;
+}
+
+.container{
+    width:600px;
+    margin:25px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.25);
+}
+
+.container h2{
+    text-align:center;
+    margin-bottom:15px;
+    font-size:18px;
+    color:#333;
+}
+
+.form-group{
+    margin-bottom:10px;
+}
+
+input[type=text],
+input[type=date]{
+    width:100%;
+    padding:6px;
+    border-radius:4px;
+    border:1px solid #ccc;
+}
+
+.btn-container{
+    text-align:center;
+    margin-top:12px;
+}
+
+.btn{
+    padding:7px 15px;
+    border:none;
+    border-radius:4px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    margin:5px;
+    font-size:13px;
+}
+
+.insert{ background:#28a745; }
+.insert:hover{ background:#218838; }
+
+.update{ background:#007bff; }
+.update:hover{ background:#0069d9; }
+
+.delete{ background:#dc3545; }
+.delete:hover{ background:#c82333; }
+
+.grid-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.grid-table th{
+    background:#343a40;
+    color:white;
+}
+
+.grid-table td{
+    border:1px solid #ccc;
+    padding:6px;
+}
+
+</style>
 </head>
 
 <body>
@@ -12,40 +97,65 @@
 <form runat="server">
 
 <div class="navbar">
-    <h1>🎟 Ticket Details</h1>
+<h1>🎟 Ticket Management</h1>
 </div>
 
-<div style="width:60%;margin:auto;margin-top:40px;background:white;padding:30px;border-radius:10px;box-shadow:0px 5px 10px rgba(0,0,0,0.3);">
+<div class="container">
 
-    <h2>Manage Ticket</h2>
+<h2>Manage Ticket</h2>
 
-    <asp:Label Text="Ticket ID:" runat="server"/>
-    <asp:TextBox ID="txtTicketId" runat="server"/>
-    <br /><br />
+<div class="form-group">
+Ticket ID
+<asp:TextBox ID="txtTicketId" runat="server"/>
+</div>
 
-    <asp:Label Text="Price:" runat="server"/>
-    <asp:TextBox ID="txtPrice" runat="server"/>
-    <br /><br />
+<div class="form-group">
+Price
+<asp:TextBox ID="txtPrice" runat="server"/>
+</div>
 
-    <asp:Label Text="Date:" runat="server"/>
-    <asp:TextBox ID="txtDate" runat="server" TextMode="Date"/>
-    <br /><br />
+<div class="form-group">
+Date
+<asp:TextBox ID="txtDate" runat="server" TextMode="Date"/>
+</div>
 
-    <asp:Label Text="Status:" runat="server"/>
-    <asp:TextBox ID="txtStatus" runat="server"/>
-    <br /><br />
+<div class="form-group">
+Status
+<asp:TextBox ID="txtStatus" runat="server"/>
+</div>
 
-    <asp:Label Text="Seat No:" runat="server"/>
-    <asp:TextBox ID="txtSeatNo" runat="server"/>
-    <br /><br />
+<div class="form-group">
+Seat No
+<asp:TextBox ID="txtSeatNo" runat="server"/>
+</div>
 
-    <asp:Button Text="Insert" runat="server" OnClick="Insert_Click"/>
-    <asp:Button Text="Update" runat="server" OnClick="Update_Click"/>
-    <asp:Button Text="Delete" runat="server" OnClick="Delete_Click"/>
+<div class="btn-container">
 
-    <br /><br />
+<asp:Button 
+Text="Insert" 
+runat="server" 
+OnClick="Insert_Click"
+CssClass="btn insert"/>
 
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" Width="100%" />
+<asp:Button 
+Text="Update" 
+runat="server" 
+OnClick="Update_Click"
+CssClass="btn update"/>
+
+<asp:Button 
+Text="Delete" 
+runat="server" 
+OnClick="Delete_Click"
+CssClass="btn delete"/>
+
+</div>
+
+<asp:GridView 
+ID="GridView1" 
+runat="server" 
+AutoGenerateColumns="true"
+CssClass="grid-table"/>
 
 </div>
 

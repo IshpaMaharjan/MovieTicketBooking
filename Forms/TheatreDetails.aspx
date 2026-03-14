@@ -3,8 +3,72 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>Theatre Details</title>
-    <link href="../CSS/style.css" rel="stylesheet" />
+<title>Theatre Details</title>
+
+<style>
+
+body{
+    font-family:'Segoe UI', Tahoma;
+    background: linear-gradient(135deg,#1d4350,#a43931);
+    margin:0;
+}
+
+.navbar{
+    background:#111;
+    color:white;
+    padding:12px;
+    text-align:center;
+}
+
+.container{
+    width:600px;
+    margin:25px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.25);
+}
+
+.form-group{
+    margin-bottom:10px;
+}
+
+input[type=text]{
+    width:100%;
+    padding:6px;
+    border-radius:4px;
+    border:1px solid #ccc;
+}
+
+.btn{
+    padding:7px 15px;
+    border:none;
+    border-radius:4px;
+    color:white;
+    margin:5px;
+}
+
+.insert{ background:#28a745; }
+.update{ background:#007bff; }
+.delete{ background:#dc3545; }
+
+.grid-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.grid-table th{
+    background:#343a40;
+    color:white;
+}
+
+.grid-table td{
+    border:1px solid #ccc;
+    padding:6px;
+}
+
+</style>
 </head>
 
 <body>
@@ -12,32 +76,31 @@
 <form runat="server">
 
 <div class="navbar">
-    <h1>🏢 Theatre Details</h1>
+<h1>🏢 Theatre Management</h1>
 </div>
 
-<div style="width:60%;margin:auto;margin-top:40px;background:white;padding:30px;border-radius:10px;box-shadow:0px 5px 10px rgba(0,0,0,0.3);">
+<div class="container">
 
-    <h2>Manage Theatre</h2>
+<div class="form-group">
+Theatre ID
+<asp:TextBox ID="txtTheatreID" runat="server"/>
+</div>
 
-    <asp:Label Text="Theatre ID:" runat="server"/>
-    <asp:TextBox ID="txtTheatreID" runat="server"/>
-    <br /><br />
+<div class="form-group">
+Theatre Name
+<asp:TextBox ID="txtTheatreName" runat="server"/>
+</div>
 
-    <asp:Label Text="Theatre Name:" runat="server"/>
-    <asp:TextBox ID="txtTheatreName" runat="server"/>
-    <br /><br />
+<div class="form-group">
+Theatre City
+<asp:TextBox ID="txtTheatreCity" runat="server"/>
+</div>
 
-    <asp:Label Text="Theatre City:" runat="server"/>
-    <asp:TextBox ID="txtTheatreCity" runat="server"/>
-    <br /><br />
+<asp:Button Text="Insert" runat="server" OnClick="btnInsert_Click" CssClass="btn insert"/>
+<asp:Button Text="Update" runat="server" OnClick="btnUpdate_Click" CssClass="btn update"/>
+<asp:Button Text="Delete" runat="server" OnClick="btnDelete_Click" CssClass="btn delete"/>
 
-    <asp:Button Text="Insert" runat="server" OnClick="btnInsert_Click"/>
-    <asp:Button Text="Update" runat="server" OnClick="btnUpdate_Click"/>
-    <asp:Button Text="Delete" runat="server" OnClick="btnDelete_Click"/>
-
-    <br /><br />
-
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" Width="100%" />
+<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" CssClass="grid-table"/>
 
 </div>
 

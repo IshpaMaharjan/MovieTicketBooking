@@ -22,55 +22,77 @@
 </head>
 
 <body>
-    <form id="form1" runat="server">
-        <div class="navbar">
-            <h1>🎟 User Ticket Information</h1>
-        </div>
+<form id="form1" runat="server">
 
-        <div class="container">
-            <div class="gv-container">
-                <h2>Filter Tickets</h2>
-                <div class="filter-section">
-                    <div>
-                        <label><b>Customer</b></label>
-                        <asp:DropDownList 
-                            ID="ddlCustomer" 
-                            runat="server" 
-                            AutoPostBack="true" 
-                            OnSelectedIndexChanged="ddlFilter_Changed">
-                        </asp:DropDownList>
-                    </div>
-                    <div>
-                        <label><b>Movie</b></label>
-                        <asp:DropDownList 
-                            ID="ddlMovie" 
-                            runat="server" 
-                            AutoPostBack="true" 
-                            OnSelectedIndexChanged="ddlFilter_Changed">
-                        </asp:DropDownList>
-                    </div>
-                </div>
+<div class="navbar">
+<h1>🎟 User Ticket Information</h1>
+</div>
 
-                <h2>Ticket Results</h2>
-                <asp:GridView 
-                    ID="gvTickets" 
-                    runat="server" 
-                    AutoGenerateColumns="false"
-                    CssClass="gridview"
-                    Width="100%"
-                    GridLines="Both">
-                    <Columns>
-                        <asp:BoundField HeaderText="Ticket ID" DataField="TicketId" />
-                        <asp:BoundField HeaderText="Price" DataField="TicketPrice" />
-                        <asp:BoundField HeaderText="Date" DataField="TicketDate" DataFormatString="{0:dd-MMM-yyyy}" />
-                        <asp:BoundField HeaderText="Status" DataField="TicketStatus" />
-                        <asp:BoundField HeaderText="Seat No" DataField="SeatNo" />
-                        <asp:BoundField HeaderText="Customer" DataField="CustName" />
-                        <asp:BoundField HeaderText="Movie" DataField="MovieTitle" />
-                    </Columns>
-                </asp:GridView>
-            </div>
-        </div>
-    </form>
+<div class="container">
+<div class="gv-container">
+
+<h2>Filter Tickets</h2>
+
+<div class="filter-section">
+
+<div>
+<label><b>Customer</b></label>
+<asp:DropDownList 
+    ID="ddlCustomer" 
+    runat="server" 
+    AutoPostBack="true"
+    OnSelectedIndexChanged="ddlFilter_Changed">
+</asp:DropDownList>
+</div>
+
+<div>
+<label><b>Movie</b></label>
+<asp:DropDownList 
+    ID="ddlMovie" 
+    runat="server" 
+    AutoPostBack="true"
+    OnSelectedIndexChanged="ddlFilter_Changed">
+</asp:DropDownList>
+</div>
+
+<div>
+<label><b>Email</b></label>
+<asp:DropDownList 
+    ID="ddlEmail" 
+    runat="server" 
+    AutoPostBack="true"
+    OnSelectedIndexChanged="ddlFilter_Changed">
+</asp:DropDownList>
+</div>
+
+</div>
+
+<h2>Ticket Results</h2>
+
+<asp:GridView 
+ID="gvTickets" 
+runat="server"
+AutoGenerateColumns="false"
+CssClass="gridview"
+Width="100%"
+GridLines="Both">
+
+<Columns>
+<asp:BoundField HeaderText="Ticket ID" DataField="TicketId" />
+<asp:BoundField HeaderText="Price" DataField="TicketPrice" />
+<asp:BoundField HeaderText="Date" DataField="TicketDate" DataFormatString="{0:dd-MMM-yyyy}" />
+<asp:BoundField HeaderText="Status" DataField="TicketStatus" />
+<asp:BoundField HeaderText="Seat No" DataField="SeatNo" />
+<asp:BoundField HeaderText="Customer" DataField="CustName" />
+<asp:BoundField HeaderText="Movie" DataField="MovieTitle" />
+<asp:BoundField HeaderText="Email" DataField="Email" />
+</Columns>
+
+</asp:GridView>
+
+</div>
+</div>
+
+</form>
 </body>
 </html>

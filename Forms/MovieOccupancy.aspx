@@ -36,7 +36,7 @@
             <h2 class="sectionTitle">Find Top Theatre Occupancy</h2>
             <div class="dashboard">
                 <div class="card">
-                    <asp:Label Text="Enter Movie ID" runat="server" />
+                    <asp:Label Text="Enter Movie Name" runat="server" />
                     <asp:TextBox ID="txtMovieId" runat="server" CssClass="input"/>
                     <br /><br />
                     <asp:Button ID="btnSearch" runat="server" Text="Check Occupancy" CssClass="btn" OnClick="Search_Click"/>

@@ -15,100 +15,91 @@ namespace coursework
                 LoadData();
         }
 
-        // Load Data
         void LoadData()
         {
             using (OracleConnection conn = new OracleConnection(connStr))
             {
                 conn.Open();
-
                 OracleDataAdapter da = new OracleDataAdapter("SELECT * FROM \"SHOW\"", conn);
-
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
             }
         }
 
-        // Insert
         protected void Insert_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn = new OracleConnection(connStr))
             {
                 conn.Open();
-
-                string query = @"INSERT INTO ""SHOW"" 
-                                (ShowId, ShowDate, ShowTime) 
-                                VALUES 
-                                (:id, TO_DATE(:showDate,'YYYY-MM-DD'), :showTime)";
+                string query = @"INSERT INTO ""SHOW"" (ShowId, ShowDate, ShowTime)
+                                 VALUES (:id, TO_DATE(:showDate,'YYYY-MM-DD'), :showTime)";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
-
-                cmd.BindByName = true;
-
-                cmd.Parameters.Add("id", OracleDbType.Int32).Value = txtShowId.Text;
-                cmd.Parameters.Add("showDate", OracleDbType.Varchar2).Value = txtShowDate.Text;
-                cmd.Parameters.Add("showTime", OracleDbType.Varchar2).Value = txtShowTime.Text;
-
+                cmd.Parameters.Add("id", txtShowId.Text);
+                cmd.Parameters.Add("showDate", txtShowDate.Text);
+                cmd.Parameters.Add("showTime", txtShowTime.Text);
                 cmd.ExecuteNonQuery();
             }
 
-            LoadData();
             ClearFields();
+            LoadData();
         }
 
-        // Update
         protected void Update_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn = new OracleConnection(connStr))
             {
                 conn.Open();
-
-                string query = @"UPDATE ""SHOW""
-                                SET ShowDate = TO_DATE(:showDate,'YYYY-MM-DD'),
-                                    ShowTime = :showTime
-                                WHERE ShowId = :id";
+                string query = @"UPDATE ""SHOW"" SET ShowDate = TO_DATE(:showDate,'YYYY-MM-DD'),
+                                 ShowTime = :showTime WHERE ShowId = :id";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
-
-                cmd.BindByName = true;
-
-                cmd.Parameters.Add("showDate", OracleDbType.Varchar2).Value = txtShowDate.Text;
-                cmd.Parameters.Add("showTime", OracleDbType.Varchar2).Value = txtShowTime.Text;
-                cmd.Parameters.Add("id", OracleDbType.Int32).Value = txtShowId.Text;
-
+                cmd.Parameters.Add("showDate", txtShowDate.Text);
+                cmd.Parameters.Add("showTime", txtShowTime.Text);
+                cmd.Parameters.Add("id", txtShowId.Text);
                 cmd.ExecuteNonQuery();
             }
 
-            LoadData();
             ClearFields();
+            LoadData();
         }
 
-        // Delete
         protected void Delete_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn = new OracleConnection(connStr))
             {
                 conn.Open();
+                OracleTransaction trans = conn.BeginTransaction();
 
-                string query = @"DELETE FROM ""SHOW"" WHERE ShowId = :id";
+                try
+                {
+                    OracleCommand cmd1 = new OracleCommand("DELETE FROM C_M_Th_H_S_T WHERE ShowId=:id", conn);
+                    cmd1.Parameters.Add("id", txtShowId.Text);
+                    cmd1.ExecuteNonQuery();
 
-                OracleCommand cmd = new OracleCommand(query, conn);
+                    OracleCommand cmd2 = new OracleCommand("DELETE FROM C_M_Th_H_S WHERE ShowId=:id", conn);
+                    cmd2.Parameters.Add("id", txtShowId.Text);
+                    cmd2.ExecuteNonQuery();
 
-                cmd.BindByName = true;
+                    OracleCommand cmd3 = new OracleCommand("DELETE FROM Show WHERE ShowId=:id", conn);
+                    cmd3.Parameters.Add("id", txtShowId.Text);
+                    cmd3.ExecuteNonQuery();
 
-                cmd.Parameters.Add("id", OracleDbType.Int32).Value = txtShowId.Text;
-
-                cmd.ExecuteNonQuery();
+                    trans.Commit();
+                }
+                catch
+                {
+                    trans.Rollback();
+                    throw;
+                }
             }
 
-            LoadData();
             ClearFields();
+            LoadData();
         }
 
-        // Clear Textboxes
         void ClearFields()
         {
             txtShowId.Text = "";

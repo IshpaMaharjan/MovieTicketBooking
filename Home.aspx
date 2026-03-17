@@ -56,7 +56,7 @@
 
 
 
-    <h2 class="sectionTitle">Complex Queries</h2>
+    <h2 class="sectionTitle">Complex Forms</h2>
 
     <div class="dashboard">
 
@@ -76,6 +76,31 @@
         </a>
 
     </div>
+
+    <div class="stats-table-container">
+    <table class="stats-table">
+        <tr>
+            <td class="stat-card">
+                <h3>Total Customers</h3>
+                <asp:Label ID="lblCustomers" runat="server" Text="0"></asp:Label>
+            </td>
+            <td class="stat-card">
+                <h3>Total Movies</h3>
+                <asp:Label ID="lblMovies" runat="server" Text="0"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td class="stat-card">
+                <h3>Total Bookings</h3>
+                <asp:Label ID="lblBookings" runat="server" Text="0"></asp:Label>
+            </td>
+            <td class="stat-card">
+                <h3>Total Tickets</h3>
+                <asp:Label ID="lblTickets" runat="server" Text="0"></asp:Label>
+            </td>
+        </tr>
+    </table>
+</div>
 
 </div>
 

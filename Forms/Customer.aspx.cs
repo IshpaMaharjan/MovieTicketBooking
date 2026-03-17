@@ -91,14 +91,41 @@ namespace coursework
             using (OracleConnection conn = new OracleConnection(connStr))
             {
                 conn.Open();
+                OracleTransaction trans = conn.BeginTransaction();
 
-                string query = "DELETE FROM Customer WHERE CustId=:id";
+                try
+                {
+                    OracleCommand cmd1 = new OracleCommand("DELETE FROM C_M_Th_H_S_T WHERE CustId=:id", conn);
+                    cmd1.Parameters.Add("id", txtID.Text);
+                    cmd1.ExecuteNonQuery();
 
-                OracleCommand cmd = new OracleCommand(query, conn);
+                    OracleCommand cmd2 = new OracleCommand("DELETE FROM C_M_Th_H_S WHERE CustId=:id", conn);
+                    cmd2.Parameters.Add("id", txtID.Text);
+                    cmd2.ExecuteNonQuery();
 
-                cmd.Parameters.Add("id", txtID.Text);
+                    OracleCommand cmd3 = new OracleCommand("DELETE FROM Cust_Mov_Thea_Hall WHERE CustId=:id", conn);
+                    cmd3.Parameters.Add("id", txtID.Text);
+                    cmd3.ExecuteNonQuery();
 
-                cmd.ExecuteNonQuery();
+                    OracleCommand cmd4 = new OracleCommand("DELETE FROM Cust_Mov_Theatre WHERE CustId=:id", conn);
+                    cmd4.Parameters.Add("id", txtID.Text);
+                    cmd4.ExecuteNonQuery();
+
+                    OracleCommand cmd5 = new OracleCommand("DELETE FROM Cust_Mov WHERE CustId=:id", conn);
+                    cmd5.Parameters.Add("id", txtID.Text);
+                    cmd5.ExecuteNonQuery();
+
+                    OracleCommand cmd6 = new OracleCommand("DELETE FROM Customer WHERE CustId=:id", conn);
+                    cmd6.Parameters.Add("id", txtID.Text);
+                    cmd6.ExecuteNonQuery();
+
+                    trans.Commit();
+                }
+                catch
+                {
+                    trans.Rollback();
+                    throw;
+                }
             }
 
             ClearFields();

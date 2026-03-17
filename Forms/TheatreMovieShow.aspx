@@ -33,7 +33,7 @@
             <h2 class="sectionTitle">Search Shows by Theatre</h2>
             <div class="dashboard">
                 <div class="card">
-                    <asp:Label Text="Enter Theatre ID" runat="server"/>
+                    <asp:Label Text="Enter Theatre Name" runat="server"/>
                     <asp:TextBox ID="txtTheatreId" runat="server" CssClass="input"/>
                     <br /><br />
                     <asp:Button ID="btnSearch" runat="server" Text="Search Shows" CssClass="btn" OnClick="Search_Click"/>

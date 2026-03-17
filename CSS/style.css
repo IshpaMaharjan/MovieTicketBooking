@@ -1,19 +1,19 @@
 ﻿body {
 	font-family: "Segoe UI", Arial;
-	background: linear-gradient(135deg,#141e30,#243b55);
+	background: linear-gradient(135deg,#0b1f3a,#1e3c72,#2a5298);
 	margin: 0;
 	color: #333;
 }
 
 /* NAVBAR */
 .navbar {
-	background: darkgray;
+	background: linear-gradient(90deg,#0b1f3a,#1e3c72);
 	color: white;
-	padding: 20px;
+	padding: 22px;
 	text-align: center;
-	font-size: 22px;
+	font-size: 24px;
 	letter-spacing: 1px;
-	box-shadow: 0px 3px 8px rgba(0,0,0,0.4);
+	box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
 }
 
 /* CONTAINER */
@@ -25,61 +25,119 @@
 
 /* SECTION TITLES */
 .sectionTitle {
-	color: white;
+	color: #ffffff;
 	text-align: center;
-	margin-top: 40px;
-	margin-bottom: 20px;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	font-size: 24px;
+	letter-spacing: 1px;
 }
 
-/* ========================= */
-/* DASHBOARD CARDS */
-/* ========================= */
+/* DASHBOARD */
 .dashboard {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 25px;
+	gap: 30px;
 }
 
+/* CARD DESIGN */
 .card {
-	background: white;
-	width: 220px;
-	height: 130px;
+	background: linear-gradient(145deg,#ffffff,#eaf1ff);
+	width: 230px;
+	height: 140px;
 	text-decoration: none;
-	border-radius: 12px;
+	border-radius: 15px;
 	text-align: center;
 	padding-top: 20px;
 	font-size: 18px;
 	font-weight: 600;
-	color: #333;
-	box-shadow: 0px 5px 12px rgba(0,0,0,0.3);
+	color: #0b1f3a;
+	box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+/* ICON */
+.icon {
+	font-size: 42px;
+	display: block;
+	margin-bottom: 10px;
 	transition: 0.3s;
 }
 
-.icon {
-	font-size: 40px;
-	display: block;
-	margin-bottom: 10px;
-}
-
-/* Card hover: lift only, no orange */
+/* CARD HOVER */
 .card:hover {
-	transform: translateY(-8px);
-	background: white;
-	color: #333;
+	transform: translateY(-10px) scale(1.04);
+	box-shadow: 0px 12px 28px rgba(0,0,0,0.4);
+	background: linear-gradient(145deg,#ffffff,#dbe8ff);
 }
 
-/* Complex elements hover (blue) */
+	/* ICON ANIMATION */
+	.card:hover .icon {
+		transform: scale(1.2);
+	}
+
+/* COMPLEX CARDS */
 .complex {
-	background: white;
-	color: black;
+	background: linear-gradient(145deg,#f5f9ff,#e3edff);
 }
 
+	/* COMPLEX HOVER (DEEP BLUE EFFECT) */
 	.complex:hover {
-		background: #3498db;
-		transform: translateY(-8px);
+		background: linear-gradient(145deg,#1e3c72,#2a5298);
 		color: white;
 	}
+
+	.complex:hover .icon {
+		color: #ffffff;
+
+	}
+
+/* ========================= */
+/* STAT TABLE STYLE */
+/* ========================= */
+.stats-table-container {
+	width: 80%;
+	margin: 40px auto;
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+.stats-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+	.stats-table td {
+		padding: 25px;
+		text-align: center;
+		background: linear-gradient(145deg, #3b5aa6, #5c7fc0);
+		color: #ffffff;
+		font-weight: 600;
+		font-size: 18px;
+		transition: all 0.3s ease;
+		border: 2px solid #ffffff;
+		border-radius: 12px;
+	}
+
+		.stats-table td h3 {
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+
+		.stats-table td label {
+			font-size: 32px;
+			font-weight: bold;
+		}
+
+		/* Hover animation */
+		.stats-table td:hover {
+			background: linear-gradient(145deg, #2a5298, #1e3c72);
+			transform: translateY(-8px) scale(1.05);
+			box-shadow: 0px 12px 25px rgba(0,0,0,0.5);
+		}
 
 /* ========================= */
 /* FORM STYLES */

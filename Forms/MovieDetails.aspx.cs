@@ -28,6 +28,7 @@ namespace coursework
             }
         }
 
+        // INSERT Movie
         protected void Insert_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn = new OracleConnection(connStr))
@@ -46,9 +47,11 @@ namespace coursework
 
                 cmd.ExecuteNonQuery();
             }
+            ClearFields();
             LoadData();
         }
 
+        // UPDATE Movie
         protected void Update_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn = new OracleConnection(connStr))
@@ -67,19 +70,66 @@ namespace coursework
 
                 cmd.ExecuteNonQuery();
             }
+            ClearFields();
             LoadData();
         }
 
+        // DELETE Movie (transaction-safe, including related tables)
         protected void Delete_Click(object sender, EventArgs e)
         {
             using (OracleConnection conn = new OracleConnection(connStr))
             {
                 conn.Open();
-                OracleCommand cmd = new OracleCommand("DELETE FROM Movie WHERE MovieId=:id", conn);
-                cmd.Parameters.Add("id", txtMovieId.Text);
-                cmd.ExecuteNonQuery();
+                OracleTransaction trans = conn.BeginTransaction();
+
+                try
+                {
+                    OracleCommand cmd1 = new OracleCommand("DELETE FROM C_M_Th_H_S_T WHERE MovieId=:id", conn);
+                    cmd1.Parameters.Add("id", txtMovieId.Text);
+                    cmd1.ExecuteNonQuery();
+
+                    OracleCommand cmd2 = new OracleCommand("DELETE FROM C_M_Th_H_S WHERE MovieId=:id", conn);
+                    cmd2.Parameters.Add("id", txtMovieId.Text);
+                    cmd2.ExecuteNonQuery();
+
+                    OracleCommand cmd3 = new OracleCommand("DELETE FROM Cust_Mov_Thea_Hall WHERE MovieId=:id", conn);
+                    cmd3.Parameters.Add("id", txtMovieId.Text);
+                    cmd3.ExecuteNonQuery();
+
+                    OracleCommand cmd4 = new OracleCommand("DELETE FROM Cust_Mov_Theatre WHERE MovieId=:id", conn);
+                    cmd4.Parameters.Add("id", txtMovieId.Text);
+                    cmd4.ExecuteNonQuery();
+
+                    OracleCommand cmd5 = new OracleCommand("DELETE FROM Cust_Mov WHERE MovieId=:id", conn);
+                    cmd5.Parameters.Add("id", txtMovieId.Text);
+                    cmd5.ExecuteNonQuery();
+
+                    OracleCommand cmd6 = new OracleCommand("DELETE FROM Movie WHERE MovieId=:id", conn);
+                    cmd6.Parameters.Add("id", txtMovieId.Text);
+                    cmd6.ExecuteNonQuery();
+
+                    trans.Commit();
+                }
+                catch
+                {
+                    trans.Rollback();
+                    throw;
+                }
             }
+
+            ClearFields();
             LoadData();
+        }
+
+        // Clear Textboxes
+        void ClearFields()
+        {
+            txtMovieId.Text = "";
+            txtTitle.Text = "";
+            txtLanguage.Text = "";
+            txtGenre.Text = "";
+            txtDuration.Text = "";
+            txtReleaseDate.Text = "";
         }
     }
 }

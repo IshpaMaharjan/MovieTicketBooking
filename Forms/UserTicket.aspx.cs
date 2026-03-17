@@ -19,38 +19,55 @@ namespace coursework
             }
         }
 
-        // Load Customer and Movie dropdowns
         private void LoadFilters()
         {
             using (OracleConnection con = new OracleConnection(connStr))
             {
                 con.Open();
 
-                // Customer dropdown
+                // Customer
                 OracleCommand cmdCust = new OracleCommand("SELECT CustId, CustName FROM Customer ORDER BY CustName", con);
                 OracleDataReader drCust = cmdCust.ExecuteReader();
+
                 ddlCustomer.Items.Clear();
                 ddlCustomer.Items.Add(new ListItem("All Customers", "0"));
+
                 while (drCust.Read())
                 {
                     ddlCustomer.Items.Add(new ListItem(drCust["CustName"].ToString(), drCust["CustId"].ToString()));
                 }
                 drCust.Close();
 
-                // Movie dropdown
+
+                // Movie
                 OracleCommand cmdMovie = new OracleCommand("SELECT MovieId, MovieTitle FROM Movie ORDER BY MovieTitle", con);
                 OracleDataReader drMovie = cmdMovie.ExecuteReader();
+
                 ddlMovie.Items.Clear();
                 ddlMovie.Items.Add(new ListItem("All Movies", "0"));
+
                 while (drMovie.Read())
                 {
                     ddlMovie.Items.Add(new ListItem(drMovie["MovieTitle"].ToString(), drMovie["MovieId"].ToString()));
                 }
                 drMovie.Close();
+
+
+                // Email
+                OracleCommand cmdEmail = new OracleCommand("SELECT DISTINCT Email FROM Customer ORDER BY Email", con);
+                OracleDataReader drEmail = cmdEmail.ExecuteReader();
+
+                ddlEmail.Items.Clear();
+                ddlEmail.Items.Add(new ListItem("All Emails", "0"));
+
+                while (drEmail.Read())
+                {
+                    ddlEmail.Items.Add(new ListItem(drEmail["Email"].ToString(), drEmail["Email"].ToString()));
+                }
+                drEmail.Close();
             }
         }
 
-        // Load tickets into GridView safely
         private void LoadTickets()
         {
             using (OracleConnection con = new OracleConnection(connStr))
@@ -58,33 +75,37 @@ namespace coursework
                 con.Open();
 
                 string sql = @"
-                    SELECT T.TicketId, T.TicketPrice, T.TicketDate, T.TicketStatus, T.SeatNo,
-                           C.CustName, M.MovieTitle
-                    FROM Ticket T
-                    INNER JOIN C_M_TH_H_S_T J ON T.TicketId = J.TicketId
-                    INNER JOIN Customer C ON J.CustId = C.CustId
-                    INNER JOIN Movie M ON J.MovieId = M.MovieId
-                    WHERE 1=1
-                ";
+                SELECT T.TicketId, T.TicketPrice, T.TicketDate, T.TicketStatus, T.SeatNo,
+                       C.CustName, C.Email, M.MovieTitle
+                FROM Ticket T
+                INNER JOIN C_M_TH_H_S_T J ON T.TicketId = J.TicketId
+                INNER JOIN Customer C ON J.CustId = C.CustId
+                INNER JOIN Movie M ON J.MovieId = M.MovieId
+                WHERE 1=1";
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
 
-                // Filter by Customer
                 if (ddlCustomer.SelectedValue != "0")
                 {
                     sql += " AND C.CustId = :custId";
                     cmd.Parameters.Add("custId", OracleDbType.Int32).Value = int.Parse(ddlCustomer.SelectedValue);
                 }
 
-                // Filter by Movie
                 if (ddlMovie.SelectedValue != "0")
                 {
                     sql += " AND M.MovieId = :movieId";
                     cmd.Parameters.Add("movieId", OracleDbType.Int32).Value = int.Parse(ddlMovie.SelectedValue);
                 }
 
+                if (ddlEmail.SelectedValue != "0")
+                {
+                    sql += " AND C.Email = :email";
+                    cmd.Parameters.Add("email", OracleDbType.Varchar2).Value = ddlEmail.SelectedValue;
+                }
+
                 sql += " ORDER BY T.TicketDate DESC";
+
                 cmd.CommandText = sql;
 
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
@@ -96,7 +117,6 @@ namespace coursework
             }
         }
 
-        // Event handler for dropdown change
         protected void ddlFilter_Changed(object sender, EventArgs e)
         {
             LoadTickets();

@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\LENOVO\\source\\repos\\coursework\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|c:\\users\\lenovo\\source\\repos\\coursework\\forms\\movieoccupancy.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\movieoccupancy.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\userticket.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\userticket.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\userticket.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\userticket.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\userticket.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\userticket.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|c:\\users\\lenovo\\source\\repos\\coursework\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\theatremovieshow.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\theatremovieshow.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\ticketdetails.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\ticketdetails.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\moviedetails.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\moviedetails.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|C:\\Users\\LENOVO\\source\\repos\\coursework\\forms\\customer.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{C958EFB9-C419-4F2C-AED8-6E03C5345FD6}|coursework.csproj|solutionrelative:forms\\customer.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,16 +50,103 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MovieOccupancy.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\MovieOccupancy.aspx.cs",
-              "RelativeDocumentMoniker": "Forms\\MovieOccupancy.aspx.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\MovieOccupancy.aspx.cs",
-              "RelativeToolTip": "Forms\\MovieOccupancy.aspx.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserTicket.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\UserTicket.aspx.cs",
+              "RelativeDocumentMoniker": "Forms\\UserTicket.aspx.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\UserTicket.aspx.cs",
+              "RelativeToolTip": "Forms\\UserTicket.aspx.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAEQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T02:13:54.698Z",
+              "WhenOpened": "2026-03-16T03:53:28.343Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserTicket.aspx.designer.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\UserTicket.aspx.designer.cs",
+              "RelativeDocumentMoniker": "Forms\\UserTicket.aspx.designer.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\UserTicket.aspx.designer.cs",
+              "RelativeToolTip": "Forms\\UserTicket.aspx.designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T04:14:53.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserTicket.aspx",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\UserTicket.aspx",
+              "RelativeDocumentMoniker": "Forms\\UserTicket.aspx",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\UserTicket.aspx",
+              "RelativeToolTip": "Forms\\UserTicket.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-14T11:49:11.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\CSS\\style.css",
+              "RelativeDocumentMoniker": "CSS\\style.css",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\CSS\\style.css",
+              "RelativeToolTip": "CSS\\style.css",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAqwLcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-03-16T11:07:27.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TheatreMovieShow.aspx",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\TheatreMovieShow.aspx",
+              "RelativeDocumentMoniker": "Forms\\TheatreMovieShow.aspx",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\TheatreMovieShow.aspx",
+              "RelativeToolTip": "Forms\\TheatreMovieShow.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-14T11:49:21.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MovieDetails.aspx",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\MovieDetails.aspx",
+              "RelativeDocumentMoniker": "Forms\\MovieDetails.aspx",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\MovieDetails.aspx",
+              "RelativeToolTip": "Forms\\MovieDetails.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-16T01:51:55.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TicketDetails.aspx",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\TicketDetails.aspx",
+              "RelativeDocumentMoniker": "Forms\\TicketDetails.aspx",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\TicketDetails.aspx",
+              "RelativeToolTip": "Forms\\TicketDetails.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-14T11:40:26.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Customer.aspx",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\Customer.aspx",
+              "RelativeDocumentMoniker": "Forms\\Customer.aspx",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\coursework\\Forms\\Customer.aspx",
+              "RelativeToolTip": "Forms\\Customer.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-03-14T11:39:05.44Z"
             }
           ]
         },

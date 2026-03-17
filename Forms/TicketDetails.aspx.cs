@@ -12,140 +12,98 @@ namespace coursework
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
                 LoadData();
-            }
         }
 
-        // Load Ticket Data
         void LoadData()
         {
-            try
+            using (OracleConnection conn = new OracleConnection(connStr))
             {
-                using (OracleConnection conn = new OracleConnection(connStr))
-                {
-                    conn.Open();
-
-                    string query = "SELECT * FROM TICKET";
-
-                    OracleDataAdapter da = new OracleDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    GridView1.DataSource = dt;
-                    GridView1.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-                Response.Write("Error loading data: " + ex.Message);
+                conn.Open();
+                OracleDataAdapter da = new OracleDataAdapter("SELECT * FROM TICKET", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
             }
         }
 
-        // Insert Ticket
         protected void Insert_Click(object sender, EventArgs e)
         {
-            try
+            using (OracleConnection conn = new OracleConnection(connStr))
             {
-                using (OracleConnection conn = new OracleConnection(connStr))
-                {
-                    conn.Open();
+                conn.Open();
+                string query = @"INSERT INTO TICKET (TicketId, TicketPrice, TicketDate, TicketStatus, SeatNo)
+                                 VALUES (:id, :price, TO_DATE(:tdate,'YYYY-MM-DD'), :status, :seat)";
 
-                    string query = @"INSERT INTO TICKET
-                                    (TicketId, TicketPrice, TicketDate, TicketStatus, SeatNo)
-                                    VALUES
-                                    (:id, :price, TO_DATE(:tdate,'YYYY-MM-DD'), :status, :seat)";
+                OracleCommand cmd = new OracleCommand(query, conn);
+                cmd.Parameters.Add("id", txtTicketId.Text);
+                cmd.Parameters.Add("price", txtPrice.Text);
+                cmd.Parameters.Add("tdate", txtDate.Text);
+                cmd.Parameters.Add("status", txtStatus.Text);
+                cmd.Parameters.Add("seat", txtSeatNo.Text);
 
-                    OracleCommand cmd = new OracleCommand(query, conn);
-
-                    cmd.BindByName = true;
-
-                    cmd.Parameters.Add("id", OracleDbType.Int32).Value = txtTicketId.Text;
-                    cmd.Parameters.Add("price", OracleDbType.Decimal).Value = txtPrice.Text;
-                    cmd.Parameters.Add("tdate", OracleDbType.Varchar2).Value = txtDate.Text;
-                    cmd.Parameters.Add("status", OracleDbType.Varchar2).Value = txtStatus.Text;
-                    cmd.Parameters.Add("seat", OracleDbType.Varchar2).Value = txtSeatNo.Text;
-
-                    cmd.ExecuteNonQuery();
-                }
-
-                ClearFields();
-                LoadData();
+                cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
-            {
-                Response.Write("Insert Error: " + ex.Message);
-            }
+
+            ClearFields();
+            LoadData();
         }
 
-        // Update Ticket
         protected void Update_Click(object sender, EventArgs e)
         {
-            try
+            using (OracleConnection conn = new OracleConnection(connStr))
             {
-                using (OracleConnection conn = new OracleConnection(connStr))
-                {
-                    conn.Open();
+                conn.Open();
+                string query = @"UPDATE TICKET SET TicketPrice = :price,
+                                 TicketDate = TO_DATE(:tdate,'YYYY-MM-DD'),
+                                 TicketStatus = :status,
+                                 SeatNo = :seat WHERE TicketId = :id";
 
-                    string query = @"UPDATE TICKET
-                                     SET TicketPrice = :price,
-                                         TicketDate = TO_DATE(:tdate,'YYYY-MM-DD'),
-                                         TicketStatus = :status,
-                                         SeatNo = :seat
-                                     WHERE TicketId = :id";
+                OracleCommand cmd = new OracleCommand(query, conn);
+                cmd.Parameters.Add("price", txtPrice.Text);
+                cmd.Parameters.Add("tdate", txtDate.Text);
+                cmd.Parameters.Add("status", txtStatus.Text);
+                cmd.Parameters.Add("seat", txtSeatNo.Text);
+                cmd.Parameters.Add("id", txtTicketId.Text);
 
-                    OracleCommand cmd = new OracleCommand(query, conn);
-
-                    cmd.BindByName = true;
-
-                    cmd.Parameters.Add("price", OracleDbType.Decimal).Value = txtPrice.Text;
-                    cmd.Parameters.Add("tdate", OracleDbType.Varchar2).Value = txtDate.Text;
-                    cmd.Parameters.Add("status", OracleDbType.Varchar2).Value = txtStatus.Text;
-                    cmd.Parameters.Add("seat", OracleDbType.Varchar2).Value = txtSeatNo.Text;
-                    cmd.Parameters.Add("id", OracleDbType.Int32).Value = txtTicketId.Text;
-
-                    cmd.ExecuteNonQuery();
-                }
-
-                ClearFields();
-                LoadData();
+                cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
-            {
-                Response.Write("Update Error: " + ex.Message);
-            }
+
+            ClearFields();
+            LoadData();
         }
 
-        // Delete Ticket
         protected void Delete_Click(object sender, EventArgs e)
         {
-            try
+            using (OracleConnection conn = new OracleConnection(connStr))
             {
-                using (OracleConnection conn = new OracleConnection(connStr))
+                conn.Open();
+                OracleTransaction trans = conn.BeginTransaction();
+
+                try
                 {
-                    conn.Open();
+                    OracleCommand cmd1 = new OracleCommand("DELETE FROM C_M_Th_H_S_T WHERE TicketId=:id", conn);
+                    cmd1.Parameters.Add("id", txtTicketId.Text);
+                    cmd1.ExecuteNonQuery();
 
-                    string query = "DELETE FROM TICKET WHERE TicketId = :id";
+                    OracleCommand cmd2 = new OracleCommand("DELETE FROM Ticket WHERE TicketId=:id", conn);
+                    cmd2.Parameters.Add("id", txtTicketId.Text);
+                    cmd2.ExecuteNonQuery();
 
-                    OracleCommand cmd = new OracleCommand(query, conn);
-
-                    cmd.BindByName = true;
-
-                    cmd.Parameters.Add("id", OracleDbType.Int32).Value = txtTicketId.Text;
-
-                    cmd.ExecuteNonQuery();
+                    trans.Commit();
                 }
+                catch
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
 
-                ClearFields();
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                Response.Write("Delete Error: " + ex.Message);
-            }
+            ClearFields();
+            LoadData();
         }
 
-        // Clear Textboxes
         void ClearFields()
         {
             txtTicketId.Text = "";
